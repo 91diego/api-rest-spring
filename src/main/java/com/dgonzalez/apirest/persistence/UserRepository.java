@@ -6,6 +6,7 @@ import com.dgonzalez.apirest.persistence.entity.User;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class UserRepository {
@@ -22,9 +23,18 @@ public class UserRepository {
     }
 
     /**
+     * Gets an specific user
+     * @param id
+     * @return User
+     */
+    public Optional<User> getUser(int id) {
+        return userCrudRepository.findById(id);
+    }
+
+    /**
      * Save new user
      * @param user
-     * @return
+     * @return User
      */
     public User save(User user) {
         return userCrudRepository.save(user);
